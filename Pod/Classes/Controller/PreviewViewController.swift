@@ -36,7 +36,7 @@ final public class PreviewViewController : UIViewController {
         return .slide
     }
     
-    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+    override public init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
         
         view.backgroundColor = UIColor.black
