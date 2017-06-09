@@ -70,7 +70,7 @@ final class PreviewViewController : UIViewController {
         
         navigationItem.leftBarButtonItem = backBarButton
         
-        if let leftBarButtonView = navigationItem.leftBarButtonItem?.value(forKey: "view") as? UIView {
+        if let leftBarButtonView = navigationController?.navigationBar.topItem?.leftBarButtonItem?.value(forKey: "view") as? UIView {
             addShadow(to: leftBarButtonView)
         }
     }
