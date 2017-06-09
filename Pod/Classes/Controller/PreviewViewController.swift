@@ -31,12 +31,6 @@ final class PreviewViewController : UIViewController {
         
         view.backgroundColor = UIColor.black
         
-        navigationController?.navigationBar.isTranslucent = true
-        navigationController?.view.backgroundColor = UIColor.clear
-        navigationController?.navigationBar.backgroundColor = UIColor.clear
-        navigationController?.navigationBar.shadowImage = UIImage()
-        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
-        
         imageView = UIImageView(frame: view.bounds)
         imageView?.contentMode = .scaleAspectFit
         imageView?.autoresizingMask = [.flexibleWidth, .flexibleHeight]
@@ -54,6 +48,15 @@ final class PreviewViewController : UIViewController {
     
     override func loadView() {
         super.loadView()
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        navigationController?.navigationBar.isTranslucent = true
+        navigationController?.navigationBar.backgroundColor = UIColor.clear
+        navigationController?.navigationBar.shadowImage = UIImage()
+        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
