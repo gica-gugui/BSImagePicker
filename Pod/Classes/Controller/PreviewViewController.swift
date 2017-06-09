@@ -69,6 +69,10 @@ final class PreviewViewController : UIViewController {
         backBarButton.imageInsets = UIEdgeInsetsMake(0, -10, 0, 0)
         
         navigationItem.leftBarButtonItem = backBarButton
+        
+        if let leftBarButtonView = navigationItem.leftBarButtonItem?.value(forKey: "view") as? UIView {
+            addShadow(to: leftBarButtonView)
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -103,5 +107,12 @@ final class PreviewViewController : UIViewController {
         UIGraphicsEndImageContext()
         
         return newImage
+    }
+    
+    fileprivate func addShadow(to view: UIView) {
+        view.layer.shadowColor = UIColor.black.cgColor
+        view.layer.shadowOffset = CGSize(width: 0, height: 0)
+        view.layer.shadowOpacity = 1
+        view.layer.shadowRadius = 1
     }
 }
