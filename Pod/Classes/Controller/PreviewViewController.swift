@@ -23,7 +23,7 @@
 import UIKit
 
 final public class PreviewViewController : UIViewController {
-    var imageView: UIImageView?
+    public var imageView: UIImageView?
     var navigationBar: UINavigationBar?
 
     fileprivate var statusBarShouldBeHidden = false
