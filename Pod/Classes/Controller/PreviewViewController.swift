@@ -24,7 +24,16 @@ import UIKit
 
 final class PreviewViewController : UIViewController {
     var imageView: UIImageView?
-    fileprivate var fullscreen = false
+
+    fileprivate var statusBarShouldBeHidden = false
+    
+    override var prefersStatusBarHidden: Bool {
+        return statusBarShouldBeHidden
+    }
+    
+    override var preferredStatusBarUpdateAnimation: UIStatusBarAnimation {
+        return .slide
+    }
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
@@ -35,11 +44,6 @@ final class PreviewViewController : UIViewController {
         imageView?.contentMode = .scaleAspectFit
         imageView?.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         view.addSubview(imageView!)
-        
-        let tapRecognizer = UITapGestureRecognizer()
-        tapRecognizer.numberOfTapsRequired = 1
-        tapRecognizer.addTarget(self, action: #selector(PreviewViewController.toggleFullscreen))
-        view.addGestureRecognizer(tapRecognizer)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -50,8 +54,13 @@ final class PreviewViewController : UIViewController {
         super.loadView()
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        statusBarShouldBeHidden = true
+        UIView.animate(withDuration: 0.25) {
+            self.setNeedsStatusBarAppearanceUpdate()
+        }
         
         navigationController?.navigationBar.isTranslucent = true
         navigationController?.navigationBar.backgroundColor = UIColor.clear
@@ -62,30 +71,11 @@ final class PreviewViewController : UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
+        statusBarShouldBeHidden = false
+        UIView.animate(withDuration: 0.25) {
+            self.setNeedsStatusBarAppearanceUpdate()
+        }
+        
         navigationController?.navigationBar.setBackgroundImage(nil, for: .default)
-    }
-    
-    func toggleFullscreen() {
-        fullscreen = !fullscreen
-        UIView.animate(withDuration: 0.3, animations: { () -> Void in
-            self.toggleNavigationBar()
-            self.toggleStatusBar()
-        })
-    }
-    
-    func toggleNavigationBar() {
-        navigationController?.setNavigationBarHidden(fullscreen, animated: false)
-    }
-    
-    func toggleStatusBar() {
-        self.setNeedsStatusBarAppearanceUpdate()
-    }
-    
-    override var prefersStatusBarHidden : Bool {
-        return false
-    }
-    
-    override var preferredStatusBarUpdateAnimation: UIStatusBarAnimation {
-        return .slide
     }
 }
