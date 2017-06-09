@@ -49,6 +49,8 @@ final class PreviewViewController : UIViewController {
         let navigationBarFrame = CGRect(x: 0, y: 0, width: view.bounds.width, height: 44.0)
         navigationBar = UINavigationBar(frame: navigationBarFrame)
         navigationBar?.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        navigationBar?.setItems([UINavigationItem(title: "")], animated: false)
+        
         view.addSubview(navigationBar!)
     }
     
