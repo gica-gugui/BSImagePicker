@@ -41,15 +41,15 @@ final class PreviewViewController : UIViewController {
         
         view.backgroundColor = UIColor.black
         
-        let navigationBarFrame = CGRect(x: 0, y: 0, width: view.bounds.width, height: 44.0)
-        navigationBar = UINavigationBar(frame: navigationBarFrame)
-        navigationBar?.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        view.addSubview(navigationBar!)
-        
         imageView = UIImageView(frame: view.bounds)
         imageView?.contentMode = .scaleAspectFit
         imageView?.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         view.addSubview(imageView!)
+        
+        let navigationBarFrame = CGRect(x: 0, y: 0, width: view.bounds.width, height: 44.0)
+        navigationBar = UINavigationBar(frame: navigationBarFrame)
+        navigationBar?.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        view.addSubview(navigationBar!)
     }
     
     required init?(coder aDecoder: NSCoder) {
