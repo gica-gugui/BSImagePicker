@@ -24,6 +24,7 @@ import UIKit
 
 final class PreviewViewController : UIViewController {
     var imageView: UIImageView?
+    var navigationBar: UINavigationBar?
 
     fileprivate var statusBarShouldBeHidden = false
     
@@ -39,6 +40,11 @@ final class PreviewViewController : UIViewController {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
         
         view.backgroundColor = UIColor.black
+        
+        let navigationBarFrame = CGRect(x: 0, y: 0, width: view.bounds.width, height: 44.0)
+        navigationBar = UINavigationBar(frame: navigationBarFrame)
+        navigationBar?.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        view.addSubview(navigationBar!)
         
         imageView = UIImageView(frame: view.bounds)
         imageView?.contentMode = .scaleAspectFit
@@ -57,20 +63,22 @@ final class PreviewViewController : UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        navigationController?.setNavigationBarHidden(true, animated: false)
+        
         statusBarShouldBeHidden = true
         UIView.animate(withDuration: 0.25) {
             self.setNeedsStatusBarAppearanceUpdate()
         }
         
-        navigationController?.navigationBar.shadowImage = UIImage()
-        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        navigationBar?.shadowImage = UIImage()
+        navigationBar?.setBackgroundImage(UIImage(), for: .default)
         
         let backBarButton = UIBarButtonItem(image: imageWithColor(image: UIImage(named: "ic_chevron_left")!, color: UIColor.white), style: .plain, target: self, action: #selector(self.backButtonTapped(_:)))
         backBarButton.imageInsets = UIEdgeInsetsMake(0, -10, 0, 0)
         
-        navigationItem.leftBarButtonItem = backBarButton
+        navigationBar?.topItem?.leftBarButtonItem = backBarButton
         
-        if let leftBarButtonView = navigationController?.navigationBar.topItem?.leftBarButtonItem?.value(forKey: "view") as? UIView {
+        if let leftBarButtonView = navigationBar?.topItem?.leftBarButtonItem?.value(forKey: "view") as? UIView {
             addShadow(to: leftBarButtonView)
         }
     }
@@ -82,8 +90,8 @@ final class PreviewViewController : UIViewController {
         UIView.animate(withDuration: 0.25) {
             self.setNeedsStatusBarAppearanceUpdate()
         }
-        
-        navigationController?.navigationBar.setBackgroundImage(nil, for: .default)
+
+        navigationController?.setNavigationBarHidden(false, animated: false)
     }
     
     func backButtonTapped(_ sender: UIBarButtonItem) {
