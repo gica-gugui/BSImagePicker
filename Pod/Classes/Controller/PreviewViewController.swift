@@ -31,6 +31,9 @@ final class PreviewViewController : UIViewController {
         
         view.backgroundColor = UIColor.black
         
+        navigationController?.navigationBar.isTranslucent = true
+        navigationController?.view.backgroundColor = UIColor.clear
+        navigationController?.navigationBar.backgroundColor = UIColor.clear
         navigationController?.navigationBar.shadowImage = UIImage()
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         
@@ -51,6 +54,12 @@ final class PreviewViewController : UIViewController {
     
     override func loadView() {
         super.loadView()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        navigationController?.navigationBar.setBackgroundImage(nil, for: .default)
     }
     
     func toggleFullscreen() {
