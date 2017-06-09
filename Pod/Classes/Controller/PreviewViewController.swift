@@ -22,17 +22,17 @@
 
 import UIKit
 
-final class PreviewViewController : UIViewController {
+final public class PreviewViewController : UIViewController {
     var imageView: UIImageView?
     var navigationBar: UINavigationBar?
 
     fileprivate var statusBarShouldBeHidden = false
     
-    override var prefersStatusBarHidden: Bool {
+    override public var prefersStatusBarHidden: Bool {
         return statusBarShouldBeHidden
     }
     
-    override var preferredStatusBarUpdateAnimation: UIStatusBarAnimation {
+    override public var preferredStatusBarUpdateAnimation: UIStatusBarAnimation {
         return .slide
     }
     
@@ -54,15 +54,15 @@ final class PreviewViewController : UIViewController {
         view.addSubview(navigationBar!)
     }
     
-    required init?(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
     
-    override func loadView() {
+    override public func loadView() {
         super.loadView()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
+    override public func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         navigationController?.setNavigationBarHidden(true, animated: true)
@@ -86,7 +86,7 @@ final class PreviewViewController : UIViewController {
         }
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
+    override public func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
         statusBarShouldBeHidden = false
