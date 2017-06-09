@@ -29,7 +29,10 @@ final class PreviewViewController : UIViewController {
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
         
-        view.backgroundColor = UIColor.white
+        view.backgroundColor = UIColor.black
+        
+        navigationController?.navigationBar.shadowImage = UIImage()
+        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         
         imageView = UIImageView(frame: view.bounds)
         imageView?.contentMode = .scaleAspectFit
@@ -55,31 +58,22 @@ final class PreviewViewController : UIViewController {
         UIView.animate(withDuration: 0.3, animations: { () -> Void in
             self.toggleNavigationBar()
             self.toggleStatusBar()
-            self.toggleBackgroundColor()
         })
     }
     
     func toggleNavigationBar() {
-        navigationController?.setNavigationBarHidden(fullscreen, animated: true)
+        navigationController?.setNavigationBarHidden(fullscreen, animated: false)
     }
     
     func toggleStatusBar() {
         self.setNeedsStatusBarAppearanceUpdate()
     }
     
-    func toggleBackgroundColor() {
-        let aColor: UIColor
-        
-        if self.fullscreen {
-            aColor = UIColor.black
-        } else {
-            aColor = UIColor.white
-        }
-        
-        self.view.backgroundColor = aColor
+    override var prefersStatusBarHidden : Bool {
+        return false
     }
     
-    override var prefersStatusBarHidden : Bool {
-        return fullscreen
+    override var preferredStatusBarUpdateAnimation: UIStatusBarAnimation {
+        return .slide
     }
 }
