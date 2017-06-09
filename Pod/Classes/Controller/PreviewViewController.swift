@@ -62,10 +62,13 @@ final class PreviewViewController : UIViewController {
             self.setNeedsStatusBarAppearanceUpdate()
         }
         
-        navigationController?.navigationBar.isTranslucent = true
-        navigationController?.navigationBar.backgroundColor = UIColor.clear
         navigationController?.navigationBar.shadowImage = UIImage()
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        
+        let backBarButton = UIBarButtonItem(image: imageWithColor(image: UIImage(named: "ic_chevron_left")!, color: UIColor.white), style: .plain, target: self, action: #selector(self.backButtonTapped(_:)))
+        backBarButton.imageInsets = UIEdgeInsetsMake(0, -10, 0, 0)
+        
+        navigationItem.leftBarButtonItem = backBarButton
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -77,5 +80,28 @@ final class PreviewViewController : UIViewController {
         }
         
         navigationController?.navigationBar.setBackgroundImage(nil, for: .default)
+    }
+    
+    func backButtonTapped(_ sender: UIBarButtonItem) {
+        _ = navigationController?.popViewController(animated: true)
+    }
+    
+    fileprivate func imageWithColor(image: UIImage, color: UIColor) -> UIImage {
+        UIGraphicsBeginImageContextWithOptions(image.size, false, image.scale)
+        color.setFill()
+        
+        let context = UIGraphicsGetCurrentContext()! as CGContext
+        context.translateBy(x: 0, y: image.size.height)
+        context.scaleBy(x: 1.0, y: -1.0);
+        context.setBlendMode(CGBlendMode.normal)
+        
+        let rect = CGRect(x: 0, y: 0, width: image.size.width, height: image.size.height) as CGRect
+        context.clip(to: rect, mask: image.cgImage!)
+        context.fill(rect)
+        
+        let newImage = UIGraphicsGetImageFromCurrentImageContext()! as UIImage
+        UIGraphicsEndImageContext()
+        
+        return newImage
     }
 }

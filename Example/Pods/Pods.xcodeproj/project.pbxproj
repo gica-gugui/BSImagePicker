@@ -157,6 +157,9 @@
 		69CE8C10832E9C6F8F7A5DE9C7CBE8EC /* Pods-BSImagePicker_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-BSImagePicker_Example-acknowledgements.plist"; sourceTree = "<group>"; };
 		6DCF89096C10A6B767280450B92D4889 /* Pods-BSImagePicker_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-BSImagePicker_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		6E093FFC1EBDD5C3B80CC346A4863422 /* BSImagePicker.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = BSImagePicker.xcconfig; sourceTree = "<group>"; };
+		6E41D5691EEAC1B900062CF5 /* ic_chevron_left.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_chevron_left.png; sourceTree = "<group>"; };
+		6E41D56A1EEAC1B900062CF5 /* ic_chevron_left@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_chevron_left@2x.png"; sourceTree = "<group>"; };
+		6E41D56B1EEAC1B900062CF5 /* ic_chevron_left@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_chevron_left@3x.png"; sourceTree = "<group>"; };
 		6EC6985F50CEFD58B48A2FADC4AD5350 /* BSGridCollectionViewLayout-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "BSGridCollectionViewLayout-dummy.m"; sourceTree = "<group>"; };
 		6FC4652B08A1600EEE45D96B6712A7A8 /* BSImagePicker-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "BSImagePicker-umbrella.h"; sourceTree = "<group>"; };
 		716E289A0D3FDA8AFA006FC2B6380CEB /* UIImageViewModeScaleAspect.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = UIImageViewModeScaleAspect.m; path = UIImageViewModeScaleAspect/UIImageViewModeScaleAspect.m; sourceTree = "<group>"; };
@@ -480,6 +483,9 @@
 		C9C399F86AD4DB048EBF5D5244BC9E1C /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				6E41D5691EEAC1B900062CF5 /* ic_chevron_left.png */,
+				6E41D56A1EEAC1B900062CF5 /* ic_chevron_left@2x.png */,
+				6E41D56B1EEAC1B900062CF5 /* ic_chevron_left@3x.png */,
 				8E7A4512D8E2269EC57F59EEFAF9EFDC /* add_photo.png */,
 				59EDC68548593C3594E5ECF4CCBE53D1 /* add_photo@2x.png */,
 				332E00A781E4D31682800A21809F05AF /* add_photo@3x.png */,
