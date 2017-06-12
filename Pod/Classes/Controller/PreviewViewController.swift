@@ -22,21 +22,21 @@
 
 import UIKit
 
-final public class PreviewViewController : UIViewController {
-    public var imageView: UIImageView?
+final class PreviewViewController : UIViewController {
+    var imageView: UIImageView?
     var navigationBar: UINavigationBar?
 
     fileprivate var statusBarShouldBeHidden = false
     
-    override public var prefersStatusBarHidden: Bool {
+    override var prefersStatusBarHidden: Bool {
         return statusBarShouldBeHidden
     }
     
-    override public var preferredStatusBarUpdateAnimation: UIStatusBarAnimation {
+    override var preferredStatusBarUpdateAnimation: UIStatusBarAnimation {
         return .slide
     }
     
-    override public init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
         
         view.backgroundColor = UIColor.black
@@ -54,15 +54,15 @@ final public class PreviewViewController : UIViewController {
         view.addSubview(navigationBar!)
     }
     
-    required public init?(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
     
-    override public func loadView() {
+    override func loadView() {
         super.loadView()
     }
     
-    override public func viewWillAppear(_ animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         navigationController?.setNavigationBarHidden(true, animated: true)
@@ -86,7 +86,7 @@ final public class PreviewViewController : UIViewController {
         }
     }
     
-    override public func viewWillDisappear(_ animated: Bool) {
+    override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
         statusBarShouldBeHidden = false
